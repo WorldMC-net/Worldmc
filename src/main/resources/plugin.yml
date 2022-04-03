@@ -1,0 +1,23 @@
+name: worldmc
+version: '${project.version}'
+main: net.worldmc.worldmc.Worldmc
+api-version: 1.18
+softdepend: [ Towny, Votifier ]
+authors: [ daft ]
+website: worldmc.net
+commands:
+  wmc-reload:
+    description: reload the plugin configuration
+    usage: /<command>
+  broadcast:
+    description: broadcast a message
+    usage: /<command> (message)
+  unprotect:
+    description: remove new player protection
+    usage: /<command> (message)
+  playtime:
+    description: display a players total playtime
+    usage: /<command> (player)
+  wild:
+    description: teleport to a random safe location
+    usage: /<command>

@@ -1,0 +1,107 @@
+Prefix: "<dark_grey>[<dark_green><bold>WMC</bold><dark_grey>] "
+NoPermission: "<red>You do not have permission to run this command"
+
+MySQL:
+  Host: "localhost"
+  Port: 3306
+  Database: "worldmc"
+  Username: ""
+  Password: ""
+
+Reload:
+  Message: "<green>Successfully reloaded configuration"
+
+Broadcast:
+  Message: "<red>Please enter broadcast content"
+
+Unprotect:
+  Enabled: true
+  Message: "<red>This command can only be used by protected players"
+
+Playtime:
+  Enabled: true
+  Messages:
+    Self: "<green>Your playtime is <gold><i><hour> <minute>"
+    Other: "<green><other_player>'s playtime is <gold><i><hour> <minute>"
+    NoTarget: "<red>Please enter valid player"
+
+Wild:
+  Enabled: true
+  Cooldown: 20 #Seconds
+  Messages:
+    Restricted: "<red>This command can only be used in spawn"
+    Cooldown: "<red>Please wait <second>s before using this command again"
+  SpawnWorld: "world_lobby"
+  DisabledWorlds:
+    - "world_nether"
+    - "world_the_end"
+
+CombatTag:
+  Enabled: true
+  TagTime: 20 #Seconds
+  Messages:
+    Tagged: "<green>You now in combat - Do not logout!"
+    Untagged: "<green>You are no longer in combat"
+
+NewPlayerProtection:
+  Enabled: true
+  Messages:
+    VictimProtected: "<red>This player has new player protection"
+    AttackerProtected: "<red>You have new player protection - Try /unprotect or wait until your /playtime is 1h"
+    Enabled: "<green>New player protection enabled"
+    Disabled: "<red>New player protection disabled"
+
+RandomTeleport:
+  MaxAttempts: 100
+  X: 600
+  Y: 300
+  Messages:
+    Random: "<green>Sending you to <blue><i><x>, <y>, <z>"
+    Town: "<green>Sending you to your town's spawn"
+    Bed: "<green>Sending you to your bed's spawn"
+  SafeBlocks:
+    - "GRASS"
+    - "DIRT"
+    - "GRASS_BLOCK"
+    - "RED_SAND"
+    - "SAND"
+    - "CLAY"
+    - "TERRACOTTA"
+    - "RED_TERRACOTTA"
+    - "ORANGE_TERRACOTTA"
+    - "COBBLESTONE"
+    - "COARSE_DIRT"
+    - "PODZOL"
+  TeleportSound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+
+RemoveEntityDrops:
+  Enabled: true
+  Items:
+    - "GOLD_INGOT"
+    - "GOLD_NUGGET"
+    - "GOLDEN_SWORD"
+
+WelcomeReward:
+  Enabled: true
+  Command: "give <player> gold_ingot 1"
+  RewardSound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  TimeLimit: 20 #Seconds
+  Trigger: "welcome"
+  Message: "<green>You welcomed <other_player> and received <gold>1g"
+
+VoteReward:
+  Enabled: true
+  Command: "give <player> gold_ingot 4"
+  RewardSound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  Messages:
+    Voted: "<green>You voted and received <gold>4g"
+  Milestones:
+    7:
+      Broadcast: "<green><player> voted and received <dark_purple><i>ender pearls <light_purple>/vote"
+      Command: "give <player> ender_pearl 8"
+    14:
+      Broadcast: "<green><player> voted and received <gray><i>netherite ingots <light_purple>/vote"
+      Command: "give <player> netherite_ingot 2"
+    28:
+      Broadcast: "<green><player> voted and received <light_purple><i>enchanted golden apples <light_purple>/vote"
+      Command: "give <player> enchanted_golden_apple 4"
