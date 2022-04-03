@@ -53,8 +53,8 @@ NewPlayerProtection:
 
 RandomTeleport:
   MaxAttempts: 100
-  X: 600
-  Y: 300
+  X: 36000
+  Y: 12000
   Messages:
     Random: "<green>Sending you to <blue><i><x>, <y>, <z>"
     Town: "<green>Sending you to your town's spawn"
