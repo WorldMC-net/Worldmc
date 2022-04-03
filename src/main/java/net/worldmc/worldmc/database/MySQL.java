@@ -52,7 +52,7 @@ public class MySQL {
     public static void createPlayer(UUID uuid) {
         try {
             if (!findPlayer(uuid)) {
-                PreparedStatement preparedStatement = getConnection().prepareStatement("INSERT IGNORE INFO players (uuid,protected) VALUES (?,?)");
+                PreparedStatement preparedStatement = getConnection().prepareStatement("INSERT INTO players (uuid, protected) VALUES (?, ?)");
                 preparedStatement.setString(1, uuid.toString());
                 preparedStatement.setBoolean(2, true);
                 preparedStatement.executeUpdate();
