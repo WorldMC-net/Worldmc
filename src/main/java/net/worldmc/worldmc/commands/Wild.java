@@ -22,9 +22,6 @@ public class Wild implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!Worldmc.getInstance().getConfig().getBoolean("Wild.Enabled")) {
-            return true;
-        }
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
