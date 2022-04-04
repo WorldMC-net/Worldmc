@@ -18,14 +18,13 @@ import java.util.HashSet;
 public class Wild implements CommandExecutor {
     public static HashSet<World> disabledWorlds = new HashSet<>();
     private static final HashMap<Player, Long> onCooldown = new HashMap<>();
-    private static final World spawnWorld = Bukkit.getWorld(Worldmc.getInstance().getConfig().getString("Wild.SpawnWorld"));
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (disabledWorlds.contains(player.getWorld()) || (player.getWorld() != spawnWorld && player.getStatistic(Statistic.PLAY_ONE_MINUTE) > 72000 && !player.isOp())) {
+            if (disabledWorlds.contains(player.getWorld()) || player.getStatistic(Statistic.PLAY_ONE_MINUTE) > 72000 && !player.isOp()) {
                 SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Restricted"));
                 return true;
             }
