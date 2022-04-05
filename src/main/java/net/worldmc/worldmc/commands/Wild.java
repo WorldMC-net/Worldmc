@@ -1,6 +1,7 @@
 package net.worldmc.worldmc.commands;
 
 import net.worldmc.worldmc.Worldmc;
+import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.SendService;
 import org.bukkit.Bukkit;
@@ -24,7 +25,7 @@ public class Wild implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (disabledWorlds.contains(player.getWorld()) || player.getStatistic(Statistic.PLAY_ONE_MINUTE) > 72000 && !player.isOp()) {
+            if (disabledWorlds.contains(player.getWorld()) || !MySQL.getProtection(player.getUniqueId()) && !player.isOp()) {
                 SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Restricted"));
                 return true;
             }
