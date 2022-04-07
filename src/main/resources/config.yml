@@ -22,7 +22,7 @@ Playtime:
   Enabled: true
   Messages:
     Self: "<green>Your playtime is <gold><i><hour> <minute>"
-    Other: "<green><other_player>'s playtime is <gold><i><hour> <minute>"
+    Other: "<green><target>'s playtime is <gold><i><hour> <minute>"
     NoTarget: "<red>Please enter valid player"
 
 Wild:
@@ -86,7 +86,7 @@ WelcomeReward:
   RewardSound: "ENTITY_EXPERIENCE_ORB_PICKUP"
   TimeLimit: 20 #Seconds
   Trigger: "welcome"
-  Message: "<green>You welcomed <other_player> and received <gold>1g"
+  Message: "<green>You welcomed <new_player> and received <gold>1g"
 
 VoteReward:
   Enabled: true
