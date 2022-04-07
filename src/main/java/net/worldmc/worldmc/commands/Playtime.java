@@ -1,5 +1,7 @@
 package net.worldmc.worldmc.commands;
 
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.worldmc.worldmc.Worldmc;
 import net.worldmc.worldmc.utilities.SendService;
 import org.bukkit.Bukkit;
@@ -8,8 +10,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.HashMap;
 
 public class Playtime implements CommandExecutor {
 
@@ -20,7 +20,6 @@ public class Playtime implements CommandExecutor {
         }
         if (sender instanceof Player) {
             Player calculatedPlayer = (Player) sender;
-            HashMap<String, String> placeholders = new HashMap<>();
 
             if (args.length > 0) {
                 Player targetPlayer = Bukkit.getPlayer(args[0]);
@@ -44,9 +43,10 @@ public class Playtime implements CommandExecutor {
                 ticks -= 1200;
             }
 
-            placeholders.put("hour", hour + "h");
-            placeholders.put("minute", minute + "m");
-            placeholders.put("other_player", calculatedPlayer.getName());
+            TagResolver.Single hourP = Placeholder.parsed("hour", hour + "h");
+            TagResolver.Single minuteP = Placeholder.parsed("minute", minute + "m");
+            TagResolver.Single target = Placeholder.parsed("target", calculatedPlayer.getName());
+            TagResolver placeholders = TagResolver.resolver(hourP, minuteP, target);
 
             if (sender == calculatedPlayer) {
                 SendService.sendMessage((Player) sender, Worldmc.getInstance().getConfig().getString("Playtime.Messages.Self"), placeholders);

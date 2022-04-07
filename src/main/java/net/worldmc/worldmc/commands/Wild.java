@@ -1,5 +1,7 @@
 package net.worldmc.worldmc.commands;
 
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.worldmc.worldmc.Worldmc;
 import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.utilities.RandomTeleport;
@@ -32,8 +34,8 @@ public class Wild implements CommandExecutor {
             if (onCooldown.containsKey(player)) {
                 long timeElapsed = (onCooldown.get(player) + Worldmc.getInstance().getConfig().getInt("Wild.Cooldown")) - Instant.now().getEpochSecond();
 
-                HashMap<String, String> placeholders = new HashMap<>();
-                placeholders.put("second", Long.toString(timeElapsed));
+                TagResolver.Single second = Placeholder.parsed("second", Long.toString(timeElapsed));
+                TagResolver placeholders = TagResolver.resolver(second);
 
                 SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Cooldown"), placeholders);
                 return true;

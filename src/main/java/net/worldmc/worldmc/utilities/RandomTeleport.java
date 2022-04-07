@@ -1,12 +1,13 @@
 package net.worldmc.worldmc.utilities;
 
 import com.palmergames.bukkit.towny.TownyAPI;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.worldmc.worldmc.Worldmc;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
@@ -43,10 +44,11 @@ public class RandomTeleport {
         newLocation.thenAccept(location -> {
             Location finalLocation = location.add(0, 1, 0);
             Bukkit.getScheduler().runTask(Worldmc.getInstance(), () -> {
-                HashMap<String, String> placeholders = new HashMap<>();
-                placeholders.put("x", Integer.toString(finalLocation.getBlockX()));
-                placeholders.put("y", Integer.toString(finalLocation.getBlockY()));
-                placeholders.put("z", Integer.toString(finalLocation.getBlockZ()));
+                TagResolver.Single x = Placeholder.parsed("x", Integer.toString(finalLocation.getBlockX()));
+                TagResolver.Single y = Placeholder.parsed("y", Integer.toString(finalLocation.getBlockY()));
+                TagResolver.Single z = Placeholder.parsed("z", Integer.toString(finalLocation.getBlockZ()));
+                TagResolver placeholders = TagResolver.resolver(x, y, z);
+
                 SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("RandomTeleport.Messages.Random"), placeholders);
 
                 player.teleportAsync(finalLocation);
