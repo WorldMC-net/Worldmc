@@ -43,7 +43,7 @@ public class Wild implements CommandExecutor {
 
             onCooldown.put(player, Instant.now().getEpochSecond());
 
-            RandomTeleport.randomTeleport(player, Bukkit.getWorld("world"));
+            RandomTeleport.createRTP(player, Bukkit.getWorld("world"));
 
             Bukkit.getScheduler().runTaskLater(Worldmc.getInstance(), () -> onCooldown.remove(player), Worldmc.getInstance().getConfig().getInt("Wild.Cooldown") * 20L);
         }

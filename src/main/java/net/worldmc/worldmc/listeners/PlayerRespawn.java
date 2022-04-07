@@ -27,6 +27,6 @@ public class PlayerRespawn implements Listener {
             return;
         }
 
-        RandomTeleport.randomTeleport(player, Bukkit.getWorld("world"));
+        RandomTeleport.createRTP(player, Bukkit.getWorld("world"));
     }
 }
