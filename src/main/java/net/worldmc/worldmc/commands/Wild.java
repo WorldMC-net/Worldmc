@@ -29,7 +29,7 @@ public class Wild implements CommandExecutor {
                 return true;
             }
 
-            if (onCooldown.containsKey(player)) {
+            if (onCooldown.containsKey(player) && !player.isOp()) {
                 long timeElapsed = (onCooldown.get(player) + Worldmc.getInstance().getConfig().getInt("Wild.Cooldown")) - Instant.now().getEpochSecond();
 
                 HashMap<String, String> placeholders = new HashMap<>();
