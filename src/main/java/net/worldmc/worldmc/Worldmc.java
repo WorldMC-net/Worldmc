@@ -60,6 +60,7 @@ public final class Worldmc extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AsyncChat(), this);
         getServer().getPluginManager().registerEvents(new EntityDeath(), this);
         getServer().getPluginManager().registerEvents(new Votifier(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
 
         for (String world : getConfig().getStringList("Wild.DisabledWorlds")) {
             Wild.disabledWorlds.add(Bukkit.getWorld(world));
