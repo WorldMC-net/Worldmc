@@ -27,7 +27,7 @@ Playtime:
 
 Wild:
   Enabled: true
-  Cooldown: 20 #Seconds
+  Cooldown: 40 #Seconds
   Playtime: 72000
   Messages:
     Restricted: "<red>This command can only be used in spawn"
