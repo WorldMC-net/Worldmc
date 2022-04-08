@@ -1,11 +1,11 @@
 package net.worldmc.worldmc.utilities;
 
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.worldmc.worldmc.Worldmc;
 import net.worldmc.worldmc.database.MySQL;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+
+import java.util.HashMap;
 
 public class VoteReward {
 
@@ -16,7 +16,8 @@ public class VoteReward {
 
         MySQL.addVote(player.getUniqueId());
 
-        TagResolver placeholders = TagResolver.resolver(Placeholder.parsed("player", player.getName()));
+        HashMap<String, String> placeholders = new HashMap<>();
+        placeholders.put("player", player.getName());
 
         SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("VoteReward.Messages.Voted"));
         SendService.sendCommand(Worldmc.getInstance().getConfig().getString("VoteReward.Command"), placeholders);

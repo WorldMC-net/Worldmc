@@ -1,7 +1,5 @@
 package net.worldmc.worldmc.utilities;
 
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.worldmc.worldmc.Worldmc;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -43,10 +41,10 @@ public class RandomTeleport {
     }
 
     private static void sendLocations(Player player, Location location) {
-        TagResolver.Single x = Placeholder.parsed("x", Integer.toString(location.getBlockX()));
-        TagResolver.Single y = Placeholder.parsed("y", Integer.toString(location.getBlockY()));
-        TagResolver.Single z = Placeholder.parsed("z", Integer.toString(location.getBlockZ()));
-        TagResolver placeholders = TagResolver.resolver(x, y, z);
+        HashMap<String, String> placeholders = new HashMap<>();
+        placeholders.put("x", Integer.toString(location.getBlockX()));
+        placeholders.put("y", Integer.toString(location.getBlockY()));
+        placeholders.put("z", Integer.toString(location.getBlockZ()));
 
         SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("RandomTeleport.Messages.Random"), placeholders);
 
