@@ -4,7 +4,6 @@ import com.palmergames.bukkit.towny.TownyAPI;
 import net.worldmc.worldmc.Worldmc;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.SendService;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,6 +26,12 @@ public class PlayerRespawn implements Listener {
             return;
         }
 
-        RandomTeleport.createRTP(player, Bukkit.getWorld("world"));
+        if (!RandomTeleport.toRespawn.containsKey(player.getUniqueId())) {
+            SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
+        } else {
+            event.setRespawnLocation(RandomTeleport.toRespawn.get(player.getUniqueId()));
+        }
+
+        RandomTeleport.issueTeleport(player);
     }
 }

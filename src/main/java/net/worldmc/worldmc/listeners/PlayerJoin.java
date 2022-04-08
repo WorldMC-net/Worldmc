@@ -2,6 +2,7 @@ package net.worldmc.worldmc.listeners;
 
 import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.utilities.NewPlayerProtection;
+import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.TabSorter;
 import net.worldmc.worldmc.utilities.WelcomeReward;
 import org.bukkit.entity.Player;
@@ -21,6 +22,7 @@ public class PlayerJoin implements Listener {
 
         if (!player.hasPlayedBefore()) {
             WelcomeReward.newPlayer(player);
+            RandomTeleport.issueTeleport(player);
         }
     }
 }

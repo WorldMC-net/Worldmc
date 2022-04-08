@@ -11,8 +11,9 @@ import java.util.concurrent.CompletableFuture;
 
 public class SafeLocator {
 
-    public static CompletableFuture<Location> findSafeLocation(World world) {
+    public static CompletableFuture<Location> findSafeLocation() {
         CompletableFuture<Location> newLocation = new CompletableFuture<>();
+        World world = Bukkit.getWorld("World");
 
         Bukkit.getScheduler().runTaskAsynchronously(Worldmc.getInstance(), new Runnable() {
             int attempts = 0;
