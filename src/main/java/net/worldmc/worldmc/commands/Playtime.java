@@ -46,7 +46,7 @@ public class Playtime implements CommandExecutor {
 
             placeholders.put("hour", hour + "h");
             placeholders.put("minute", minute + "m");
-            placeholders.put("other_player", calculatedPlayer.getName());
+            placeholders.put("target", calculatedPlayer.getName());
 
             if (sender == calculatedPlayer) {
                 SendService.sendMessage((Player) sender, Worldmc.getInstance().getConfig().getString("Playtime.Messages.Self"), placeholders);

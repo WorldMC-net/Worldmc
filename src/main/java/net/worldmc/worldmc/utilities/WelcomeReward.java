@@ -35,7 +35,7 @@ public class WelcomeReward {
 
             HashMap<String, String> placeholders = new HashMap<>();
             placeholders.put("player", player.getName());
-            placeholders.put("target", newPlayer.getName());
+            placeholders.put("new_player", newPlayer.getName());
 
             SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("WelcomeReward.Message"), placeholders);
             SendService.sendCommand(Worldmc.getInstance().getConfig().getString("WelcomeReward.Command"), placeholders);
