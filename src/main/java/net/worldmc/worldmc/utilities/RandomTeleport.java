@@ -27,7 +27,7 @@ public class RandomTeleport {
         }
         undergoingTeleport.add(player.getUniqueId());
         SafeLocator.findSafeLocation().thenAccept(location -> {
-            Location finalLocation = location.add(0, 1, 0);
+            Location finalLocation = location.add(0.5, 1, 0.5);
             Bukkit.getScheduler().runTask(Worldmc.getInstance(), () -> {
                 if (player.isDead()) {
                     toRespawn.put(player.getUniqueId(), finalLocation);
