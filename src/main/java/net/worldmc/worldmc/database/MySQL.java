@@ -42,7 +42,7 @@ public class MySQL {
     public void createTables() {
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS players (uuid VARCHAR(100), votes INTEGER(100), protected BOOLEAN, PRIMARY KEY (uuid))");
+            preparedStatement = getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS players (uuid VARCHAR(100), votes INTEGER(100), PRIMARY KEY (uuid))");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,9 +52,8 @@ public class MySQL {
     public static void createPlayer(UUID uuid) {
         try {
             if (!findPlayer(uuid)) {
-                PreparedStatement preparedStatement = getConnection().prepareStatement("INSERT INTO players (uuid, protected) VALUES (?, ?)");
+                PreparedStatement preparedStatement = getConnection().prepareStatement("INSERT INTO players (uuid) VALUES (?)");
                 preparedStatement.setString(1, uuid.toString());
-                preparedStatement.setBoolean(2, true);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -100,31 +99,5 @@ public class MySQL {
             e.printStackTrace();
         }
         return 0;
-    }
-
-    public static void disableProtection(UUID uuid) {
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement("UPDATE players SET protected=? WHERE uuid=?");
-            preparedStatement.setBoolean(1, false);
-            preparedStatement.setString(2, uuid.toString());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static boolean getProtection(UUID uuid) {
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement("SELECT protected FROM players WHERE uuid=?");
-            preparedStatement.setString(1, uuid.toString());
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getBoolean("protected");
-            }
-            return false;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 }

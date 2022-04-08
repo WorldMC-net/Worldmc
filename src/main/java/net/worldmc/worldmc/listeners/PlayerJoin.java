@@ -1,7 +1,6 @@
 package net.worldmc.worldmc.listeners;
 
 import net.worldmc.worldmc.database.MySQL;
-import net.worldmc.worldmc.utilities.NewPlayerProtection;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.TabSorter;
 import net.worldmc.worldmc.utilities.WelcomeReward;
@@ -16,7 +15,6 @@ public class PlayerJoin implements Listener {
     public void playerJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        NewPlayerProtection.checkEnabledProtection(player);
         MySQL.createPlayer(player.getUniqueId());
         TabSorter.setTab();
 

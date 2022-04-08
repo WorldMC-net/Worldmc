@@ -7,6 +7,7 @@ import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.SendService;
 import org.bukkit.Bukkit;
+import org.bukkit.Statistic;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,7 +27,7 @@ public class Wild implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (disabledWorlds.contains(player.getWorld()) || !MySQL.getProtection(player.getUniqueId()) && !player.isOp()) {
+            if (disabledWorlds.contains(player.getWorld()) || player.getStatistic(Statistic.PLAY_ONE_MINUTE) > Worldmc.getInstance().getConfig().getInt("Wild.Playtime") && !player.isOp()) {
                 SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Restricted"));
                 return true;
             }

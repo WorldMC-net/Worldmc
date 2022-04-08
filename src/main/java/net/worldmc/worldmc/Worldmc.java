@@ -3,7 +3,6 @@ package net.worldmc.worldmc;
 import net.worldmc.worldmc.commands.*;
 import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.listeners.*;
-import net.worldmc.worldmc.utilities.NewPlayerProtection;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.RemoveEntityDrops;
 import org.bukkit.Bukkit;
@@ -46,14 +45,9 @@ public final class Worldmc extends JavaPlugin {
             getCommand("wild").setExecutor(new Wild());
         }
 
-        if (getConfig().getBoolean("Unprotect.Enabled")) {
-            getCommand("unprotect").setExecutor(new Unprotect());
-        }
-
         getCommand("wmc-reload").setExecutor(new Reload());
         getCommand("broadcast").setExecutor(new Broadcast());
 
-        getServer().getPluginManager().registerEvents(new TownyPlayerDamagePlayer(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawn(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
@@ -73,18 +67,6 @@ public final class Worldmc extends JavaPlugin {
         for (String block : getConfig().getStringList("RandomTeleport.SafeBlocks")) {
             RandomTeleport.safeBlocks.add(Material.matchMaterial(block));
         }
-
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                for (Player player : NewPlayerProtection.protectedPlayers) {
-                    if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) > 72000) {
-                        NewPlayerProtection.disableProtection(player);
-                    }
-                }
-            }
-        }.runTaskTimer(this, 0L, 1200L);
     }
 
     @Override

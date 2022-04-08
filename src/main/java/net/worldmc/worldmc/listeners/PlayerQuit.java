@@ -1,6 +1,5 @@
 package net.worldmc.worldmc.listeners;
 
-import net.worldmc.worldmc.utilities.CombatTag;
 import net.worldmc.worldmc.utilities.TabSorter;
 import net.worldmc.worldmc.utilities.WelcomeReward;
 import org.bukkit.entity.Player;
@@ -16,9 +15,5 @@ public class PlayerQuit implements Listener {
 
         WelcomeReward.playerQuit(player);
         TabSorter.setTab();
-
-        if (CombatTag.taggedPlayers.containsKey(player)) {
-            player.setHealth(0);
-        }
     }
 }
