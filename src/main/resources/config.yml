@@ -31,7 +31,6 @@ Wild:
   Messages:
     Restricted: "<red>This command can only be used in spawn"
     Cooldown: "<red>Please wait <second>s before using this command again"
-    Finding: "<yellow>Finding safe location..."
   DisabledWorlds:
     - "world_nether"
     - "world_the_end"
