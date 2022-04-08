@@ -20,7 +20,6 @@ public class RandomTeleport {
 
     public static void issueTeleport(Player player) {
         if (toRespawn.containsKey(player.getUniqueId())) {
-            Bukkit.getLogger().info("Remove from toRespawn");
             sendLocations(player, toRespawn.get(player.getUniqueId()));
             toRespawn.remove(player.getUniqueId());
             return;
@@ -34,7 +33,6 @@ public class RandomTeleport {
             Bukkit.getScheduler().runTask(Worldmc.getInstance(), () -> {
                 if (player.isDead()) {
                     toRespawn.put(player.getUniqueId(), finalLocation);
-                    Bukkit.getLogger().info(toRespawn.toString());
                 } else {
                     player.teleportAsync(finalLocation);
                     sendLocations(player, finalLocation);
