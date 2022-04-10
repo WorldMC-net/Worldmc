@@ -20,11 +20,11 @@ public class PlayerRespawn implements Listener {
             return;
         }
 
-        if (TownyAPI.getInstance().getTownSpawnLocation(player) != null) {
+        /** if (TownyAPI.getInstance().getTownSpawnLocation(player) != null) {
             SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("RandomTeleport.Messages.Town"));
             event.setRespawnLocation(TownyAPI.getInstance().getTownSpawnLocation(player));
             return;
-        }
+        } */
 
         if (!RandomTeleport.toRespawn.containsKey(player.getUniqueId())) {
             SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
