@@ -13,7 +13,7 @@ public class PlayerDeath implements Listener {
     public void playerDeathEvent(PlayerDeathEvent event) {
         Player player = event.getPlayer();
 
-        if (player.getBedSpawnLocation() != null || TownyAPI.getInstance().getTownSpawnLocation(player) != null) {
+        if (player.getBedSpawnLocation() != null/** || TownyAPI.getInstance().getTownSpawnLocation(player) != null*/) {
             return;
         }
 
