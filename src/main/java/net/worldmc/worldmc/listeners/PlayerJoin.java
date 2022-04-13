@@ -6,6 +6,7 @@ import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.SendService;
 import net.worldmc.worldmc.utilities.TabSorter;
 import net.worldmc.worldmc.utilities.WelcomeReward;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,8 +32,10 @@ public class PlayerJoin implements Listener {
         }
 
         if (player.getGameMode() == GameMode.SPECTATOR) {
-            RandomTeleport.issueTeleport(player);
-            SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
+            Bukkit.getScheduler().runTaskLater(Worldmc.getInstance(), () -> {
+                RandomTeleport.issueTeleport(player);
+                SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
+            }, 1L);
         }
     }
 }
