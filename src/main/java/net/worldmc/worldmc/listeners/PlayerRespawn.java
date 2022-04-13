@@ -1,9 +1,9 @@
 package net.worldmc.worldmc.listeners;
 
-import com.palmergames.bukkit.towny.TownyAPI;
 import net.worldmc.worldmc.Worldmc;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.SendService;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,6 +27,7 @@ public class PlayerRespawn implements Listener {
         } */
 
         if (!RandomTeleport.toRespawn.containsKey(player.getUniqueId())) {
+            player.setGameMode(GameMode.SPECTATOR);
             SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
         } else {
             event.setRespawnLocation(RandomTeleport.toRespawn.get(player.getUniqueId()));

@@ -1,5 +1,6 @@
 package net.worldmc.worldmc.listeners;
 
+import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.TabSorter;
 import net.worldmc.worldmc.utilities.WelcomeReward;
 import org.bukkit.entity.Player;
@@ -15,5 +16,9 @@ public class PlayerQuit implements Listener {
 
         WelcomeReward.playerQuit(player);
         TabSorter.setTab();
+
+        if (RandomTeleport.toRespawn.containsKey(player.getUniqueId())) {
+            RandomTeleport.toRespawn.remove(player);
+        }
     }
 }

@@ -1,10 +1,7 @@
 package net.worldmc.worldmc.utilities;
 
 import net.worldmc.worldmc.Worldmc;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -29,13 +26,14 @@ public class RandomTeleport {
         SafeLocator.findSafeLocation().thenAccept(location -> {
             Location finalLocation = location.add(0, 1, 0);
             Bukkit.getScheduler().runTask(Worldmc.getInstance(), () -> {
-                if (player.isDead()) {
+                undergoingTeleport.remove(player.getUniqueId());
+                if (player.isDead() && player.isOnline()) {
                     toRespawn.put(player.getUniqueId(), finalLocation);
                 } else {
+                    player.setGameMode(GameMode.SURVIVAL);
                     player.teleportAsync(finalLocation);
                     sendLocations(player, finalLocation);
                 }
-                undergoingTeleport.remove(player.getUniqueId());
             });
         });
     }
