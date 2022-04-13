@@ -31,6 +31,7 @@ public final class Worldmc extends JavaPlugin {
             SQL.connect();
         } catch (ClassNotFoundException | SQLException e) {
             Bukkit.getLogger().info("Database could not connect");
+            Bukkit.getPluginManager().disablePlugin(worldmc);
         }
 
         if (SQL.isConnected()) {

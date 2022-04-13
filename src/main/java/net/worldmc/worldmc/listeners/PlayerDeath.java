@@ -1,7 +1,9 @@
 package net.worldmc.worldmc.listeners;
 
 import com.palmergames.bukkit.towny.TownyAPI;
+import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.utilities.RandomTeleport;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +19,8 @@ public class PlayerDeath implements Listener {
             return;
         }
 
+        MySQL.setGhost(player.getUniqueId(), true);
+        player.setGameMode(GameMode.SPECTATOR);
         RandomTeleport.issueTeleport(player);
     }
 }

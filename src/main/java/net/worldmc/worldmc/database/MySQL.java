@@ -42,7 +42,7 @@ public class MySQL {
     public void createTables() {
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS players (uuid VARCHAR(100), votes INTEGER(100), PRIMARY KEY (uuid))");
+            preparedStatement = getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS players (uuid VARCHAR(100), votes INTEGER(100), ghost BOOLEAN, PRIMARY KEY (uuid))");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,6 +73,31 @@ public class MySQL {
         return false;
     }
 
+    public static void setGhost(UUID uuid, boolean enabled) {
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement("UPDATE players SET ghost=? WHERE uuid=?");
+            preparedStatement.setBoolean(1, enabled);
+            preparedStatement.setString(2, uuid.toString());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean getGhost(UUID uuid) {
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement("SELECT ghost FROM players WHERE uuid=?");
+            preparedStatement.setString(1, uuid.toString());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getBoolean("ghost");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void addVote(UUID uuid) {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement("UPDATE players SET votes=? WHERE uuid=?");
@@ -89,10 +114,8 @@ public class MySQL {
             PreparedStatement preparedStatement = getConnection().prepareStatement("SELECT votes FROM players WHERE uuid=?");
             preparedStatement.setString(1, uuid.toString());
             ResultSet resultSet = preparedStatement.executeQuery();
-            int votes;
             if (resultSet.next()) {
-                votes = resultSet.getInt("votes");
-                return votes;
+                return resultSet.getInt("votes");
             }
             return 0;
         } catch (SQLException e) {
