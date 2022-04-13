@@ -27,11 +27,14 @@ public class RandomTeleport {
             Location finalLocation = location.add(0, 1, 0);
             Bukkit.getScheduler().runTask(Worldmc.getInstance(), () -> {
                 undergoingTeleport.remove(player.getUniqueId());
-                if (player.isDead() && player.isOnline()) {
+                if (!player.isOnline()) {
+                    return;
+                }
+                if (player.isDead()) {
                     toRespawn.put(player.getUniqueId(), finalLocation);
                 } else {
-                    player.setGameMode(GameMode.SURVIVAL);
                     player.teleportAsync(finalLocation);
+                    player.setGameMode(GameMode.SURVIVAL);
                     sendLocations(player, finalLocation);
                 }
             });
