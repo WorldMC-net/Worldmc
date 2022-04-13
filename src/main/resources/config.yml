@@ -38,7 +38,7 @@ Wild:
     - "world_the_end"
 
 RandomTeleport:
-  MaxAttempts: 100
+  MaxAttempts: 300
   X: 36000
   Z: 12000
   Messages:
