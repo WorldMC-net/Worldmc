@@ -38,13 +38,14 @@ Wild:
     - "world_the_end"
 
 RandomTeleport:
-  MaxAttempts: 600
+  MaxAttempts: 100
   X: 36000
   Z: 12000
   Messages:
     Random: "<green>Sending you to <blue><i><x>, <y>, <z>"
     Town: "<green>Sending you to your town's spawn"
     Bed: "<green>Sending you to your bed's spawn"
+    Died: "<red>You died!"
   SafeBlocks:
     - "GRASS"
     - "DIRT"

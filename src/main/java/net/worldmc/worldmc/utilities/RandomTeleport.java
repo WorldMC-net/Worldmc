@@ -11,18 +11,9 @@ import java.util.UUID;
 
 public class RandomTeleport {
     public static HashSet<Material> safeBlocks = new HashSet<>();
-    public static final HashMap<UUID, Location> toRespawn = new HashMap<>();
     private static final HashSet<UUID> undergoingTeleport = new HashSet<>();
 
     public static void issueTeleport(Player player) {
-        if (toRespawn.containsKey(player.getUniqueId())) {
-            player.setGameMode(GameMode.SURVIVAL);
-            player.teleportAsync(toRespawn.get(player.getUniqueId()));
-            MySQL.setGhost(player.getUniqueId(), false);
-            sendLocations(player, toRespawn.get(player.getUniqueId()));
-            toRespawn.remove(player.getUniqueId());
-            return;
-        }
         if (undergoingTeleport.contains(player.getUniqueId())) {
             return;
         }
@@ -32,14 +23,10 @@ public class RandomTeleport {
             Bukkit.getScheduler().runTask(Worldmc.getInstance(), () -> {
                 undergoingTeleport.remove(player.getUniqueId());
                 if (player.isOnline()) {
-                    if (player.isDead()) {
-                        toRespawn.put(player.getUniqueId(), finalLocation);
-                    } else {
-                        player.setGameMode(GameMode.SURVIVAL);
-                        player.teleportAsync(finalLocation);
-                        MySQL.setGhost(player.getUniqueId(), false);
-                        sendLocations(player, finalLocation);
-                    }
+                    MySQL.setGhost(player.getUniqueId(), false);
+                    player.teleportAsync(finalLocation);
+                    sendLocations(player, finalLocation);
+                    player.setGameMode(GameMode.SURVIVAL);
                 }
             });
         });

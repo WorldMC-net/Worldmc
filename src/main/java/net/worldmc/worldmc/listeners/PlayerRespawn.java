@@ -1,15 +1,16 @@
 package net.worldmc.worldmc.listeners;
 
 import net.worldmc.worldmc.Worldmc;
-import net.worldmc.worldmc.database.MySQL;
 import net.worldmc.worldmc.utilities.RandomTeleport;
 import net.worldmc.worldmc.utilities.SendService;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
+
+import java.util.Random;
 
 public class PlayerRespawn implements Listener {
 
@@ -28,12 +29,7 @@ public class PlayerRespawn implements Listener {
             return;
         } */
 
-        if (!RandomTeleport.toRespawn.containsKey(player.getUniqueId())) {
-            SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
-        }
-
-        Bukkit.getScheduler().runTaskLater(Worldmc.getInstance(), () -> {
-            RandomTeleport.issueTeleport(player);
-        }, 1L);
+        RandomTeleport.issueTeleport(player);
+        SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
     }
 }

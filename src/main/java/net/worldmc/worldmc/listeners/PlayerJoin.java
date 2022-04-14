@@ -25,14 +25,15 @@ public class PlayerJoin implements Listener {
         if (!player.hasPlayedBefore()) {
             WelcomeReward.newPlayer(player);
             RandomTeleport.issueTeleport(player);
+            MySQL.setGhost(player.getUniqueId(), true);
+            player.setGameMode(GameMode.SPECTATOR);
+            return;
         }
 
         if (MySQL.getGhost(player.getUniqueId())) {
+            RandomTeleport.issueTeleport(player);
             Bukkit.getScheduler().runTaskLater(Worldmc.getInstance(), () -> {
-                RandomTeleport.issueTeleport(player);
-                if (!player.isDead()) {
-                    SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
-                }
+                SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("Wild.Messages.Finding"));
             }, 1L);
         }
     }
