@@ -1,10 +1,6 @@
 package net.worldmc.worldmc.listeners;
 
-import net.worldmc.worldmc.Worldmc;
 import net.worldmc.worldmc.database.MySQL;
-import net.worldmc.worldmc.utilities.RandomTeleport;
-import net.worldmc.worldmc.utilities.SendService;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,6 +19,5 @@ public class PlayerDeath implements Listener {
 
         MySQL.setGhost(player.getUniqueId(), true);
         player.setGameMode(GameMode.SPECTATOR);
-        SendService.sendMessage(player, Worldmc.getInstance().getConfig().getString("RandomTeleport.Messages.Died"));
     }
 }
