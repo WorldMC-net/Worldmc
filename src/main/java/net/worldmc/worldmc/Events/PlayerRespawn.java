@@ -1,16 +1,12 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
 import net.worldmc.worldmc.Worldmc;
-import net.worldmc.worldmc.utilities.RandomTeleport;
-import net.worldmc.worldmc.utilities.SendService;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import net.worldmc.worldmc.Utilities.RandomTeleport;
+import net.worldmc.worldmc.Utilities.SendService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
-
-import java.util.Random;
 
 public class PlayerRespawn implements Listener {
 

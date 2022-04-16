@@ -37,6 +37,13 @@ Wild:
     - "world_nether"
     - "world_the_end"
 
+CombatTag:
+  Enabled: true
+  TagTime: 20 #Seconds
+  Messages:
+    Tagged: "<red>You now in combat - Do not logout!"
+    Untagged: "<green>You are no longer in combat"
+
 RandomTeleport:
   MaxAttempts: 100
   X: 36000

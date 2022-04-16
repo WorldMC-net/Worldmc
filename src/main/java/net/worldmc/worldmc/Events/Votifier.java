@@ -1,6 +1,6 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
-import net.worldmc.worldmc.utilities.VoteReward;
+import net.worldmc.worldmc.Utilities.VoteReward;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

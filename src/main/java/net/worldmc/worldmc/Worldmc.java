@@ -1,13 +1,13 @@
 package net.worldmc.worldmc;
 
-import net.worldmc.worldmc.commands.Broadcast;
-import net.worldmc.worldmc.commands.Playtime;
-import net.worldmc.worldmc.commands.Reload;
-import net.worldmc.worldmc.commands.Wild;
-import net.worldmc.worldmc.database.MySQL;
-import net.worldmc.worldmc.listeners.*;
-import net.worldmc.worldmc.utilities.RandomTeleport;
-import net.worldmc.worldmc.utilities.RemoveEntityDrops;
+import net.worldmc.worldmc.Commands.Broadcast;
+import net.worldmc.worldmc.Commands.Playtime;
+import net.worldmc.worldmc.Commands.Reload;
+import net.worldmc.worldmc.Commands.Wild;
+import net.worldmc.worldmc.Database.MySQL;
+import net.worldmc.worldmc.Events.*;
+import net.worldmc.worldmc.Utilities.RandomTeleport;
+import net.worldmc.worldmc.Utilities.RemoveEntityDrops;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;

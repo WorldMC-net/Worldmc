@@ -1,7 +1,7 @@
-package net.worldmc.worldmc.utilities;
+package net.worldmc.worldmc.Utilities;
 
 import net.worldmc.worldmc.Worldmc;
-import net.worldmc.worldmc.database.MySQL;
+import net.worldmc.worldmc.Database.MySQL;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 

@@ -1,6 +1,6 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
-import net.worldmc.worldmc.utilities.RemoveEntityDrops;
+import net.worldmc.worldmc.Utilities.RemoveEntityDrops;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;

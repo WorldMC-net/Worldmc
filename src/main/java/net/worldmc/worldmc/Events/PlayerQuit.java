@@ -1,7 +1,7 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
-import net.worldmc.worldmc.utilities.TabSorter;
-import net.worldmc.worldmc.utilities.WelcomeReward;
+import net.worldmc.worldmc.Utilities.TabSorter;
+import net.worldmc.worldmc.Utilities.WelcomeReward;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

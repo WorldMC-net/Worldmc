@@ -1,11 +1,11 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
 import net.worldmc.worldmc.Worldmc;
-import net.worldmc.worldmc.database.MySQL;
-import net.worldmc.worldmc.utilities.RandomTeleport;
-import net.worldmc.worldmc.utilities.SendService;
-import net.worldmc.worldmc.utilities.TabSorter;
-import net.worldmc.worldmc.utilities.WelcomeReward;
+import net.worldmc.worldmc.Database.MySQL;
+import net.worldmc.worldmc.Utilities.RandomTeleport;
+import net.worldmc.worldmc.Utilities.SendService;
+import net.worldmc.worldmc.Utilities.TabSorter;
+import net.worldmc.worldmc.Utilities.WelcomeReward;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

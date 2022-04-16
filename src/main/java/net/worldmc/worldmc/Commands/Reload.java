@@ -1,7 +1,7 @@
-package net.worldmc.worldmc.commands;
+package net.worldmc.worldmc.Commands;
 
 import net.worldmc.worldmc.Worldmc;
-import net.worldmc.worldmc.utilities.SendService;
+import net.worldmc.worldmc.Utilities.SendService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

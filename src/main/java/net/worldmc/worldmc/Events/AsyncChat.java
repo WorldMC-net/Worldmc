@@ -1,9 +1,9 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import net.worldmc.worldmc.Worldmc;
-import net.worldmc.worldmc.utilities.WelcomeReward;
+import net.worldmc.worldmc.Utilities.WelcomeReward;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

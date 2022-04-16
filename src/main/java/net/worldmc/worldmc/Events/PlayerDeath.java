@@ -1,6 +1,6 @@
-package net.worldmc.worldmc.listeners;
+package net.worldmc.worldmc.Events;
 
-import net.worldmc.worldmc.database.MySQL;
+import net.worldmc.worldmc.Database.MySQL;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

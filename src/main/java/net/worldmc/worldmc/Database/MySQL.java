@@ -1,4 +1,4 @@
-package net.worldmc.worldmc.database;
+package net.worldmc.worldmc.Database;
 
 import net.worldmc.worldmc.Worldmc;
 

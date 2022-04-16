@@ -1,4 +1,4 @@
-package net.worldmc.worldmc.utilities;
+package net.worldmc.worldmc.Utilities;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
